@@ -1,10 +1,16 @@
 {
-  "name": "node-marlene",
+  "name": "doki",
   "version": "0.1.0",
   "description": "",
   "license": "MIT",
-  "repository": "username/repository",
+  "repository": "filiplinhares/doki",
   "author": "Filipe <filipelinhares.com>",
-  "engines": { "node": ">=0.10.0" },
-  "keywords": []
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [],
+  "dependencies": {
+    "dss": "^1.0.4",
+    "glob": "^5.0.15"
+  }
 }
