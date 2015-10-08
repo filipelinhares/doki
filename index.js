@@ -1,17 +1,37 @@
-var fs = require('fs');
-var dss = require('dss');
-var glob = require('glob');
+'use strict';
 
-dss.parser( 'custom', function( i, line, block ) {
-  return line;
-});
+const fs   = require('fs');
+const dss  = require('dss');
+const glob = require('glob');
 
-var arr = [];
-files = glob.sync('*.scss');
-files.forEach(function (file) {
-  var x = fs.readFileSync(file);
-  dss.parse( x, {}, function ( parsedObject ) {
-    arr.push(parsedObject.blocks[0]);
-    fs.writeFileSync('index.json', JSON.stringify(arr));
-  });
-});
+class Doki {
+  constructor(files) {
+    this.files = files;
+    this.parsedArray = [];
+  }
+
+  parse(destFile, options) {
+    let globs = glob.sync(this.files);
+    options || {};
+
+    // Check if has any file
+    if (globs.length === 0) {
+      console.error(`Has no file in ${this.files}!`);
+      process.exit();
+    }
+
+    globs.forEach((file) => {
+      let fileContent = fs.readFileSync(file);
+      dss.parse(fileContent, options, (parsedObject) => {
+        this.parsedArray.push(parsedObject.blocks[0]);
+        fs.writeFileSync(destFile, JSON.stringify(this.parsedArray));
+      });
+    });
+  }
+
+  parser(name, cb) {
+    dss.parser(name, ( i, line, block ) => cb(i, line, block));
+  }
+}
+
+module.exports = Doki;
