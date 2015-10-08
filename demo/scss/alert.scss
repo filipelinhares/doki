@@ -1,0 +1,14 @@
+// @id alert
+// @name Alert
+// @description Your standard alert messages.
+//
+// @state .danger - Error message.
+// @state .warning - Caution message.
+// @state .info - Information message.
+// @state .other - Successfull message
+//
+// @markup
+//   <div class="alert warning">
+//     My alert message
+//   </div>
+//
