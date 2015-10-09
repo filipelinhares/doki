@@ -1,14 +1,17 @@
 {
   "name": "doki",
   "version": "0.1.0",
-  "description": "",
+  "description": "Generates a JSON with your styleguide's data",
   "license": "MIT",
   "repository": "filiplinhares/doki",
   "author": "Filipe <filipelinhares.com>",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
-  "keywords": [],
+  "files": [
+    "index.js"
+  ],
+  "keywords": ["styleguide", "generator"],
   "dependencies": {
     "dss": "^1.0.4",
     "glob": "^5.0.15"
