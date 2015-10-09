@@ -1,6 +1,7 @@
-# Doki
-Generate a JSON with your styleguide's data
-
+<div align="center">
+<img src="images/logo.png" alt="doki's logo" >
+<p>Generate a JSON with your styleguide's data<p>
+</div>
 ## Installation
 ```sh
 npm install --save doki
@@ -10,7 +11,7 @@ npm install --save doki
 ```js
 const Doki = require('doki');
 
-let doki = new Doki('my-css-files/*.css');
+let doki = new Doki('my-css-files/*.scss');
 doki.parse('docs/styles.json');
 ```
 
