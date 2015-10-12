@@ -11,16 +11,22 @@ class Doki {
   }
 
   parse(destFile, options) {
-    let globs = glob.sync(this.files);
+    let files;
     options || {};
 
+    if (Array.isArray(this.files)) {
+      files = this.files;
+    } else {
+      files = glob.sync(this.files);
+    }
+
     // Check if has any file
-    if (globs.length === 0) {
+    if (files.length === 0) {
       console.error(`Has no file in ${this.files}!`);
       process.exit();
     }
 
-    globs.forEach((file) => {
+    files.forEach((file) => {
       let fileContent = fs.readFileSync(file);
       dss.parse(fileContent, options, (parsedObject) => {
         this.parsedArray.push(parsedObject.blocks[0]);

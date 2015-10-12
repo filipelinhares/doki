@@ -1,6 +1,6 @@
 {
   "name": "doki",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generates a JSON with your styleguide's data",
   "license": "MIT",
   "repository": "filiplinhares/doki",

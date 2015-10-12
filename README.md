@@ -20,15 +20,15 @@ doki.parse('docs/styles.json');
 //
 // @name Button
 // @description Your standard form button.
-// 
+//
 // @state :hover - Highlights when hovering.
 // @state :disabled - Dims the button when disabled.
 // @state .primary - Indicates button is the primary action.
 // @state .smaller - A smaller button
-// 
+//
 // @markup
 //   <button>This is a button</button>
-// 
+//
 ```
 
 **output JSON`**
@@ -37,7 +37,7 @@ doki.parse('docs/styles.json');
   "name": "Button",
   "description": "Your standard form button.",
   "state": [
-    { 
+    {
       "name": ":hover",
       "escaped": "pseudo-class-hover",
       "description": "Highlights when hovering."
@@ -70,7 +70,7 @@ doki.parse('docs/styles.json');
 Doki was built on top of [DSS](https://github.com/DSSWG/DSS)
 
 #### class Doki(sourceFile)
-The constructor accept any patter from [glob](https://www.npmjs.com/package/glob#glob-primer).
+The constructor accept any patter from [glob](https://www.npmjs.com/package/glob#glob-primer) or an array of files.
 
 ```js
 const Doki = require('doki');
