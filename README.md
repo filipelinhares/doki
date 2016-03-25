@@ -1,7 +1,9 @@
 <div align="center">
 <img src="images/logo.png" alt="doki's logo" >
-<p>Generate a JSON with your styleguide's data<p>
 </div>
+
+[![Build Status](https://travis-ci.org/filipelinhares/doki.svg?branch=master)](https://travis-ci.org/filipelinhares/doki)
+
 ## Installation
 ```sh
 npm install --save doki
@@ -10,30 +12,29 @@ npm install --save doki
 ## Basic usage
 ```js
 const Doki = require('doki');
-
 let doki = new Doki('my-css-files/*.scss');
-doki.parse('docs/styles.json');
+let output = doki.out();
 ```
 
-**Your .scss file**
-```scss
-//
-// @name Button
-// @description Your standard form button.
-//
-// @state :hover - Highlights when hovering.
-// @state :disabled - Dims the button when disabled.
-// @state .primary - Indicates button is the primary action.
-// @state .smaller - A smaller button
-//
-// @markup
-//   <button>This is a button</button>
-//
+**Your `.css` file**
+```css
+/**
+ * @name Button
+ * @description Your standard form button.
+ *
+ * @state :hover - Highlights when hovering.
+ * @state :disabled - Dims the button when disabled.
+ * @state .primary - Indicates button is the primary action.
+ * @state .smaller - A smaller button
+ *
+ * @markup
+ *   <button>This is a button</button>
+ */
 ```
 
-**output JSON`**
-```json
-{
+**output**
+```js
+[{
   "name": "Button",
   "description": "Your standard form button.",
   "state": [
@@ -62,9 +63,8 @@ doki.parse('docs/styles.json');
     "example": "<button>This is a button</button>",
     "escaped": "&lt;button&gt;This is a button&lt;/button&gt;"
   }
-}
+}]
 ```
-> Multiples files will generate a array of objects.
 
 ## Doki API
 Doki was built on top of [DSS](https://github.com/DSSWG/DSS)
@@ -74,47 +74,47 @@ The constructor accept any patter from [glob](https://www.npmjs.com/package/glob
 
 ```js
 const Doki = require('doki');
-
-var doki = new Doki('css/*.css');
+let doki = new Doki('css/*.css');
 ```
 
-#### doki.parse(outputFile, [options]())
-Generate a new JSON.
+#### doki.out([options])
+- `options` = `{}`
+- return `Array`
 
 ```js
-var doki = new Doki('css/*.css');
-
-doki.parse('output-file');
+let doki = new Doki('css/*.css');
+let output = doki.out();
 ```
 
 #### doki.parser(name, cb(i, line, block))
-[DSS](https://github.com/DSSWG/DSS#dssparser-name-callback-), by default, includes 4 parsers for the name, description, state and markup of a comment block. You can add to, or override, these defaults by registering a new parser.
+[DSS](https://github.com/DSSWG/DSS#dssparser-name-callback-), by default, includes 4 parsers for the `name`, `description`, `state` and `markup` of a comment block. You can add to, or override, these defaults by registering a new `parser`.
 
 ```js
-var doki = new Doki('css/*.css');
-
+let doki = new Doki('css/*.css');
 doki.parser('name', (i, line, block) => line );
-doki.parse('output-file');
+let output = doki.out('output-file');
 ```
 
 ## Styleguide Documentation
 
-#### @name
+#### `@name`
 ```css
-// @name Button
+/* @name Button */
 ```
-#### @description
+#### `@description`
 ```css
-// @description Your standard form button.
+/* @description Your standard form button. */
 ```
-#### @state
+#### `@state`
 ```css
-// @state :hover - Highlights when hovering.
+/* @state :hover - Highlights when hovering. */
 ```
-#### @markup
+#### `@markup`
 ```css
-// @markup
-//   <button>This is a button</button>
+/**
+ *  @markup
+ *  <button>This is a button</button>
+ */
 ```
 
 
