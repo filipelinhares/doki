@@ -10,7 +10,7 @@ class Doki {
     this.parsedArray = [];
   }
 
-  parse(destFile, options) {
+  out(destFile, options) {
     let files;
     options || {};
 
