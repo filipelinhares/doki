@@ -1,7 +1,7 @@
 'use strict';
 
-const fs   = require('fs');
-const dss  = require('dss');
+const fs = require('fs');
+const dss = require('dss');
 const glob = require('glob');
 
 class Doki {
@@ -12,7 +12,7 @@ class Doki {
 
   out(destFile, options) {
     let files;
-    options || {};
+    options = options || {};
 
     if (Array.isArray(this.files)) {
       files = this.files;
@@ -37,7 +37,7 @@ class Doki {
   }
 
   parser(name, cb) {
-    dss.parser(name, ( i, line, block ) => cb(i, line, block));
+    dss.parser(name, (i, line, block) => cb(i, line, block));
   }
 }
 

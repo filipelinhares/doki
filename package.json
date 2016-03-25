@@ -11,9 +11,21 @@
   "files": [
     "index.js"
   ],
-  "keywords": ["styleguide", "generator"],
+  "keywords": [
+    "styleguide",
+    "generator"
+  ],
   "dependencies": {
     "dss": "^1.0.4",
     "glob": "^5.0.15"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "xo": {
+    "space": true
+  },
+  "devDependencies": {
+    "xo": "^0.13.0"
   }
 }
