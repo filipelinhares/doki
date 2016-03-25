@@ -30,9 +30,10 @@ class Doki {
       let fileContent = fs.readFileSync(file);
       dss.parse(fileContent, options, (parsedObject) => {
         this.parsedArray.push(parsedObject.blocks[0]);
-        fs.writeFileSync(destFile, JSON.stringify(this.parsedArray));
       });
     });
+
+    return this.parsedArray;
   }
 
   parser(name, cb) {
